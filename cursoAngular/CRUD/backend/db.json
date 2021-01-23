@@ -39,6 +39,11 @@
       "name": "Lapis",
       "price": "2.50",
       "id": 8
+    },
+    {
+      "name": "Fenaflan 30 comp",
+      "price": "35.50",
+      "id": 9
     }
   ]
 }
