@@ -3,27 +3,22 @@
     {
       "id": 1,
       "name": "Caneta BIC preta",
-      "price": 5.89
+      "price": "2.25"
     },
     {
       "id": 2,
       "name": "Notebook Mac Pro",
-      "price": 12000.89
+      "price": "12000.80"
     },
     {
       "id": 3,
-      "name": "Sansung S20+",
+      "name": "Sansung S20+ Ultra",
       "price": 5000.89
     },
     {
       "name": "geladeira",
-      "price": "54646",
+      "price": "5464",
       "id": 4
-    },
-    {
-      "name": "blusinha",
-      "price": "1000000",
-      "id": 5
     },
     {
       "name": "caneta",
@@ -31,19 +26,9 @@
       "id": 6
     },
     {
-      "name": "Xbox one x",
+      "name": "Xbox one x 1 TB",
       "price": "2500",
       "id": 7
-    },
-    {
-      "name": "Lapis",
-      "price": "2.50",
-      "id": 8
-    },
-    {
-      "name": "Fenaflan 30 comp",
-      "price": "35.50",
-      "id": 9
     }
   ]
 }
