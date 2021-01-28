@@ -6,5 +6,5 @@ export interface Albuns{
     imagemCapa?: string;
     pasta?: string;
     titulo: string;
-    totalFaixas: number; 
+    total_faixas: number; 
 }

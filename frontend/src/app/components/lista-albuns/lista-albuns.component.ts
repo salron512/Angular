@@ -11,9 +11,9 @@ export class ListaAlbunsComponent implements OnInit {
 
   albuns: Albuns [] = [];
 
-  displayedColumns = ['id','titulo','artista','ano', 'duracao']
+  displayedColumns = ['id','titulo','artista','ano', 'duracao', 'total_faixas']
 
-  constructor(private serviceService: ServiceService ) { }
+  constructor(private serviceService: ServiceService) { }
 
   ngOnInit(): void {
     this.serviceService.recuperaLista().subscribe(
@@ -23,5 +23,4 @@ export class ListaAlbunsComponent implements OnInit {
       }
     )
   }
-
 }

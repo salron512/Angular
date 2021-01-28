@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "lista-albuns": {
+      "hosting": {
+        "frontend": [
+          "lista-albuns"
+        ]
+      }
+    }
+  }
+}
