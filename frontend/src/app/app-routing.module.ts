@@ -1,3 +1,4 @@
+import { LoginComponent } from './components/login/login.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -5,14 +6,14 @@ import { ListaAlbunsComponent } from './components/lista-albuns/lista-albuns.com
 const routes: Routes = [
   {
     path: "",
-    component: ListaAlbunsComponent
-  },{
-    path:"lista-albuns",
-    component: ListaAlbunsComponent
+    component: LoginComponent
   },
   {
     path: "cadastro",
     component: CadastroComponent
+  },{
+    path: "lista-albuns",
+    component: ListaAlbunsComponent
   }
   
 ];

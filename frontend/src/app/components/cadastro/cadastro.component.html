@@ -1,1 +1,22 @@
-<p>cadastro works!</p>
+<mat-card>
+    <mat-card-title>Cadastro</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="E-mail"
+            [(ngModel)]="usuario.email" name="email"
+            >
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Senha"
+            [(ngModel)]="usuario.senha" name="senha"
+            >
+        </mat-form-field> 
+    </form>
+    <button  mat-raised-button (click)="criaUsuario()" color='primary'>
+        Cadastrar
+    </button>
+    
+    <button mat-raised-button (click)="cancelar()" >
+        Voltar
+    </button>
+</mat-card>

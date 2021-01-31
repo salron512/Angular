@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ServiceService } from './../service.service';
 import { Usuario } from './../lista-albuns/usuario.model';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
     senha: '',
   }
 
-  constructor(private service: ServiceService) { }
+  constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     this.service.logaUsuario(this.usuario)
   }
   cadastrar(): void {
-    this.service.criaUsuario(this.usuario)
+    this.router.navigate(["/cadastro"])
+    
   }
 
 }

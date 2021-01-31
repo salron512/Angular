@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ServiceService } from './../service.service';
 import { Albuns } from './albuns.model';
 import { Component, OnInit } from '@angular/core';
@@ -13,14 +14,19 @@ export class ListaAlbunsComponent implements OnInit {
 
   displayedColumns = ['id','titulo','artista','ano', 'duracao', 'total_faixas']
 
-  constructor(private serviceService: ServiceService) { }
+  constructor(private serviceService: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
-    this.serviceService.recuperaLista().subscribe(
-      albuns =>{
-        this.albuns = albuns
-        console.log(albuns)
-      }
-    )
+      this.serviceService.recuperaLista().subscribe(
+        albuns =>{
+          this.albuns = albuns
+          console.log(albuns)
+        }
+      )
+    }
+    sair(): void {
+      this.serviceService.sair
+      this.router.navigate(["/"])
+    }
   }
-}
+  

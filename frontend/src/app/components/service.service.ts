@@ -11,43 +11,70 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class ServiceService {
+  usuariologado: any
+  token: string = ''
+  idToken: any
+  resultado: string =''
+   
 
-  baseUrl ="https://lista-albuns-default-rtdb.firebaseio.com/albuns.json";
-
-
- 
- usuarioLogado: any
- 
 
   constructor(
-    private http: HttpClient,private auth: AngularFireAuth, 
+    private http: HttpClient, private auth: AngularFireAuth,
     private snackBar: MatSnackBar,
-    private router: Router
-    ) { }
+    private router: Router,
+  ) { }
 
+  urlBase = `https://lista-albuns-default-rtdb.firebaseio.com/albuns.json?auth=`
 
-  recuperaLista(): Observable<Albuns[]>{
-    return this.http.get<Albuns[]>(this.baseUrl)
-  }
-  logaUsuario(usuario: Usuario): void {
-    this.auth.signInWithEmailAndPassword(
+    async logaUsuario(usuario: Usuario): Promise<void>{
+   await this.auth.signInWithEmailAndPassword(
       usuario.email,
       usuario.senha
 
-    ).then(estado =>{
-      this.router.navigate(['/lista-albuns'])
+    ).then(async resposta => {
+     await resposta.user?.getIdToken().then(idToken => {
+        this.token = idToken
 
+
+        this.urlBase = this.urlBase + this.token
+      
+      })
+
+      this.router.navigate(['/lista-albuns'])
     })
-    .catch(e =>{
-      this.showMessage("Usuario Invalido!")
-    } )
-    this.usuarioLogado = this.auth.currentUser
+      .catch(e => {
+        this.showMessage("Usuario Invalido!")
+      })
+      console.log("TOKEN:" + this.token)
+      console.log("URl" + this.urlBase)
+      console.log("tokenResult"+ this.auth.idTokenResult)
   }
-  criaUsuario(usuario: Usuario): void {
+
+
+  recuperaLista(): Observable<Albuns[]> {
+    console.log("url " + this.urlBase)
+   
+    return this.http.get<Albuns[]>(this.urlBase)
+  }
+
+  
+ async criaUsuario(usuario: Usuario): Promise<void> {
     this.auth.createUserWithEmailAndPassword(
       usuario.email,
       usuario.senha
-    )
+    ).then(e =>{
+       e.user?.getIdToken().then( resposta =>{
+         this.token = resposta
+         console.log("token usuario" + this.token )
+       }
+       )
+      this.router.navigate(["/lista-albuns"])
+    })
+    
+    .catch(e =>{
+      this.showMessage("Erro ao cadastar")
+    })
+    
 
   }
   showMessage(msg: string): void {
@@ -58,4 +85,9 @@ export class ServiceService {
     }
     )
   }
+  sair(): void {
+    this.auth.signOut()
+    
+  }
+ 
 }
