@@ -32,7 +32,7 @@ export class ServiceService {
       usuario.senha
 
     ).then(async resposta => {
-     await resposta.user?.getIdToken().then(idToken => {
+     await resposta.user?.getIdToken(true).then(idToken => {
         this.token = idToken
 
 
@@ -47,13 +47,11 @@ export class ServiceService {
       })
       console.log("TOKEN:" + this.token)
       console.log("URl" + this.urlBase)
-      console.log("tokenResult"+ this.auth.idTokenResult)
+
   }
 
 
   recuperaLista(): Observable<Albuns[]> {
-    console.log("url " + this.urlBase)
-   
     return this.http.get<Albuns[]>(this.urlBase)
   }
 

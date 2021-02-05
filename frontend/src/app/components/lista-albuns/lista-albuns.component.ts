@@ -24,9 +24,10 @@ export class ListaAlbunsComponent implements OnInit {
         }
       )
     }
-    sair(): void {
-      this.serviceService.sair
+    async sair(): Promise<void> {
+      await this.serviceService.sair()
       this.router.navigate(["/"])
+    
     }
   }
   
